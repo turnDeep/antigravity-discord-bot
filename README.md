@@ -2,7 +2,7 @@
 
 ![Header Image](header.jpg)
 
-# Antigravity Discord Bot
+# SafeClaw
 
 
 <img src="https://img.shields.io/badge/Node.js-18.x+-43853D?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
@@ -12,9 +12,12 @@
 
 </div>
 
-このツールはAntigravity (VS Code Fork) を Discord から操作するためのボットです。
+**SafeClaw** は、OpenClawなどのAIエージェントとOSの間に常駐し、AIが危険なコマンド（ファイルの全削除、秘密鍵の読み取り、外部への不審な通信など）を実行しようとした瞬間に、スマホやチャットに「これを許可しますか？」と承認ダイアログ（Human-in-the-loop）を出すソフトウェアです。
+
+これにより、「便利だけど、いつか自分のPCを破壊されるんじゃないか」という恐怖を抱えることなく、AIエージェントを安全に利用することができます。
+
+また、本ツールには既存の機能として、Antigravity (VS Code Fork) を Discord から操作するためのボット機能も搭載されています。
 Chrome DevTools Protocol (CDP) を使用して Antigravity の内部状態にアクセスし、メッセージの送信や操作の自動化を行います。
-> ※ 本ツールは公式のAntigravityとは無関係の非公式ツールです。
 
 > [!CAUTION]
 > **【重要】セキュリティに関する警告 / Security Warning**
@@ -51,6 +54,13 @@ antigravityのAIチャットに以下のプロンプトを入力してくださ�
 
 ## 🚀 主な機能
 
+### SafeClaw（コマンドプロキシ・HITL機能）
+- **危険パターンの検知**: `rm -rf /` のようなファイル破壊、`~/.ssh/` 内の秘密鍵読み取り、`chmod 777`、`curl/wget` 等の外部通信などを検知し、AIの実行をブロックします。
+- **承認リクエスト送信**: Discordボットを通じて、指定された管理者に「✅ 許可」「❌ 拒否」の承認ダイアログをリアルタイムで送信します。
+- **安全なコマンドのスルー**: `ls` や `echo` など、危険パターンに該当しないコマンドは即座に実行されるため、作業スピードを落としません。
+- **フェイルセーフ**: ボットがダウンしている場合やタイムアウト時は自動的にコマンドをブロックします。
+
+### Antigravity連携機能
 1.  **テキスト生成**: DiscordメッセージをそのままAntigravityに転送し、生成を開始します。
 2.  **ファイル添付**: 画像やテキストファイルを添付してAntigravityに送信できます。
 3.  **モデル切替**: `/model` コマンドでAIモデルを切り替えられます。
@@ -141,6 +151,20 @@ antigravityのAIチャットに以下のプロンプトを入力してくださ�
    ```bash
    node src/index.js
    ```
+
+3. **SafeClaw コマンドプロキシの利用（テスト）**
+   ボット起動後、別のターミナルから `src/proxy/proxy.js` を経由してコマンドを実行します。
+
+   ✅ 安全なコマンドのテスト（そのまま実行されます）
+   ```bash
+   node src/proxy/proxy.js echo "Hello, SafeClaw!"
+   ```
+
+   🚨 危険なコマンドのテスト（Discordに承認ダイアログが届きます）
+   ```bash
+   node src/proxy/proxy.js rm -rf /tmp/test_dir
+   ```
+   > 実際のAIエージェント（OpenClaw等）と連携する場合は、AI側のコマンド実行処理（`child_process.exec`など）のプレフィックスに `node /path/to/src/proxy/proxy.js` を付与するよう変更してください。
 
 ## 📖 コマンド一覧
 

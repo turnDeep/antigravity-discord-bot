@@ -9,6 +9,7 @@ import { setupFileWatcher, setFileWatcherConfig } from './services/fileWatcher.j
 import { commands } from './discord/commands.js';
 import { handleInteraction, handleMessageCreate, handleThreadCreate, handleChannelDelete } from './discord/events.js';
 import { initSchedules } from './discord/commands/schedule.js';
+import { initProxyServer, handleProxyInteraction } from './proxy/server.js';
 
 const client = new Client({
     intents: [
@@ -75,6 +76,7 @@ client.once('ready', async () => {
     });
 
     initSchedules(client);
+    initProxyServer(client);
 
     try {
         console.log('🔄 Started refreshing application (/) commands.');
@@ -90,6 +92,11 @@ client.once('ready', async () => {
 });
 
 client.on('interactionCreate', async interaction => {
+    // まずプロキシ関係のインタラクションかチェックする
+    if (interaction.isButton()) {
+        const handled = await handleProxyInteraction(interaction);
+        if (handled) return;
+    }
     const cdp = await ensureCDP(interaction.channelId);
     await handleInteraction(interaction, cdp);
 });
