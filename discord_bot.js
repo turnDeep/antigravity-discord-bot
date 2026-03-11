@@ -124,11 +124,11 @@ function setupFileWatcher() {
 const commands = [
     {
         name: 'help',
-        description: 'Antigravity Bot コマンド一覧を表示',
+        description: 'Codex Bot コマンド一覧を表示',
     },
     {
         name: 'screenshot',
-        description: 'Antigravityのスクリーンショットを取得',
+        description: 'Codexのスクリーンショットを取得',
     },
     {
         name: 'stop',
@@ -181,8 +181,8 @@ client.once('ready', async () => {
     console.log(`Logged in as ${client.user.tag}`);
     setupFileWatcher();
     ensureCDP().then(res => {
-        if (res) console.log("✅ Auto-connected to Antigravity on startup.");
-        else console.log("❌ Could not auto-connect to Antigravity on startup.");
+        if (res) console.log("✅ Auto-connected to Codex on startup.");
+        else console.log("❌ Could not auto-connect to Codex on startup.");
     });
 
     // 登録されたコマンドをDiscord APIに送信
@@ -204,7 +204,7 @@ client.on('interactionCreate', async interaction => {
     lastActiveChannel = interaction.channel;
     const cdp = await ensureCDP();
     if (!cdp) {
-        await interaction.reply({ content: "❌ CDP not found. Is Antigravity running?", ephemeral: true });
+        await interaction.reply({ content: "❌ CDP not found. Is Codex running?", ephemeral: true });
         return;
     }
 
@@ -212,7 +212,7 @@ client.on('interactionCreate', async interaction => {
 
     if (commandName === 'help') {
         return interaction.reply(
-            `📖 **Antigravity Bot コマンド一覧**\n\n` +
+            `📖 **Codex Bot コマンド一覧**\n\n` +
             `💬 **テキスト送信** — 通常のメッセージを送信\n` +
             `📎 **ファイル添付** — 画像・ファイルを添付して送信\n\n` +
             `🖼️ \`/screenshot\` — スクリーンショット取得\n` +
@@ -338,7 +338,7 @@ client.on('messageCreate', async message => {
 
     const cdp = await ensureCDP();
     if (!cdp) {
-        return message.reply(`⚠️ Antigravityに接続できません。デバッグモードで起動しているか確認してください。`);
+        return message.reply(`⚠️ Codexに接続できません。デバッグモードで起動しているか確認してください。`);
     }
 
     const res = await injectMessage(cdp, messageText);

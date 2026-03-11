@@ -1,11 +1,11 @@
 export const commands = [
     {
         name: 'help',
-        description: 'Antigravity Bot コマンド一覧を表示',
+        description: 'Codex Bot コマンド一覧を表示',
     },
     {
         name: 'screenshot',
-        description: 'Antigravityのスクリーンショットを取得',
+        description: 'Codexのスクリーンショットを取得',
     },
     {
         name: 'stop',
@@ -112,11 +112,11 @@ export const commands = [
     },
     {
         name: 'workspace',
-        description: 'Antigravityのワークスペースをチャンネルに紐づけます',
+        description: 'Codexのワークスペースをチャンネルに紐づけます',
         options: [
             {
                 name: 'list',
-                description: '現在開いているAntigravityの一覧を表示します',
+                description: '現在開いているCodexの一覧を表示します',
                 type: 1
             },
             {

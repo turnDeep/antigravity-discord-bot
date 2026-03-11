@@ -2,7 +2,7 @@
     "name": "ag-mobile-monitor",
     "version": "1.0.0",
     "type": "module",
-    "description": "Mobile web interface for monitoring Antigravity chat via visual snapshots",
+    "description": "Mobile web interface for monitoring Codex chat via visual snapshots",
     "scripts": {
         "start": "node src/index.js",
         "dev": "node src/index.js"

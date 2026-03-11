@@ -2,7 +2,7 @@
 
 ![Header Image](header.jpg)
 
-# Antigravity Discord Bot
+# Codex Discord Bot
 
 
 <img src="https://img.shields.io/badge/Node.js-18.x+-43853D?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" />
@@ -12,9 +12,9 @@
 
 </div>
 
-このツールはAntigravity (VS Code Fork) を Discord から操作するためのボットです。
-Chrome DevTools Protocol (CDP) を使用して Antigravity の内部状態にアクセスし、メッセージの送信や操作の自動化を行います。
-> ※ 本ツールは公式のAntigravityとは無関係の非公式ツールです。
+このツールはCodex (VS Code Fork) を Discord から操作するためのボットです。
+Chrome DevTools Protocol (CDP) を使用して Codex の内部状態にアクセスし、メッセージの送信や操作の自動化を行います。
+> ※ 本ツールは公式のCodexとは無関係の非公式ツールです。
 
 > [!CAUTION]
 > **【重要】セキュリティに関する警告 / Security Warning**
@@ -39,20 +39,20 @@ Chrome DevTools Protocol (CDP) を使用して Antigravity の内部状態にア
 
 ## おすすめの導入方法
 
-antigravityのAIチャットに以下のプロンプトを入力してください。
-「https://github.com/harunamitrader/antigravity-discord-bot を導入して。可能な範囲でAI側で作業を行い、必要な情報があれば質問して。手動で行う必要があるものは丁寧にやり方を教えて。」
+codexのAIチャットに以下のプロンプトを入力してください。
+「https://github.com/harunamitrader/codex-discord-bot を導入して。可能な範囲でAI側で作業を行い、必要な情報があれば質問して。手動で行う必要があるものは丁寧にやり方を教えて。」
 
 導入が完了したら、
-「デバッグモード用ショートカットとantigravity-discord-botの起動用ショートカットをデスクトップに作成して」
+「デバッグモード用ショートカットとcodex-discord-botの起動用ショートカットをデスクトップに作成して」
 も必要に応じてプロンプトを送信しても良いかもしれません。
 
-導入方法でわからないことやエラーがあれば都度antigravityのAIチャットで質問すればどうにか導入できるはずです。
-それと、許可ボタン周りの機能が不十分なので、拡張機能の　Antigravity Auto Accept　を入れて、AUTO　ACCEPTをONにしたほうが良い。
+導入方法でわからないことやエラーがあれば都度codexのAIチャットで質問すればどうにか導入できるはずです。
+それと、許可ボタン周りの機能が不十分なので、拡張機能の　Codex Auto Accept　を入れて、AUTO　ACCEPTをONにしたほうが良い。
 
 ## 🚀 主な機能
 
-1.  **テキスト生成**: DiscordメッセージをそのままAntigravityに転送し、生成を開始します。
-2.  **ファイル添付**: 画像やテキストファイルを添付してAntigravityに送信できます。
+1.  **テキスト生成**: DiscordメッセージをそのままCodexに転送し、生成を開始します。
+2.  **ファイル添付**: 画像やテキストファイルを添付してCodexに送信できます。
 3.  **モデル切替**: `/model` コマンドでAIモデルを切り替えられます。
 4.  **モード切替**: `/mode` コマンドでPlanning/Fastモードを切り替えられます。
 5.  **スクリーンショット**: `/screenshot` コマンドで現在の画面を取得できます。
@@ -61,14 +61,14 @@ antigravityのAIチャットに以下のプロンプトを入力してくださ�
 8.  **ファイル監視**: プロジェクトディレクトリ内のファイル変更を検知し、Discordに通知します。
 9.  **テンプレート機能**: `/template` コマンドでよく使うプロンプトを登録・呼び出しできます。
 10. **スケジュール機能**: `/schedule` コマンドで日時にプロンプトを自動実行できます。
-11. **マルチワークスペース対応**: `/workspace` コマンドで特定のDiscordチャンネルと特定のAntigravityのウィンドウを紐づけられます。
-12. **スレッド同期機能**: Discordで新しいスレッドを作成すると、自動的にAntigravity上でも新規チャットが開始されます。
+11. **マルチワークスペース対応**: `/workspace` コマンドで特定のDiscordチャンネルと特定のCodexのウィンドウを紐づけられます。
+12. **スレッド同期機能**: Discordで新しいスレッドを作成すると、自動的にCodex上でも新規チャットが開始されます。
 
 ## 🛠️ 事前準備 (Discord Botの作成)
 
 ### 1. Discord Botの作成とトークン取得
 1. [Discord Developer Portal](https://discord.com/developers/applications) にアクセスし、ログインします。
-2. 右上の **"New Application"** をクリックし、名前（例: `AntigravityBot`）を入力して作成します。
+2. 右上の **"New Application"** をクリックし、名前（例: `CodexBot`）を入力して作成します。
 3. 左メニューの **"Bot"** を選択し、**"Reset Token"** をクリックしてトークンを生成・コピーします。
    - ※このトークンが `.env` の `DISCORD_BOT_TOKEN` になります。
 4. 同ページ（Botタブ）の下部にある **"Privileged Gateway Intents"** セクションで、以下を **ON** にします。
@@ -99,14 +99,14 @@ antigravityのAIチャットに以下のプロンプトを入力してくださ�
 
 ### 必要要件
 - Node.js (v18以上推奨)
-- Antigravity (デバッグポート 9222 で起動していること)
+- Codex (デバッグポート 9222 で起動していること)
 
 ### インストール手順
 
 1. リポジトリをクローンします。
    ```bash
-   git clone https://github.com/harunamitrader/antigravity-discord-bot.git
-   cd antigravity-discord-bot
+   git clone https://github.com/harunamitrader/codex-discord-bot.git
+   cd codex-discord-bot
    ```
 
 2. 依存パッケージをインストールします。
@@ -130,11 +130,11 @@ antigravityのAIチャットに以下のプロンプトを入力してくださ�
 
 ### 起動方法
 
-1. **Antigravityをデバッグモードで起動**
-   - Antigravityのショートカットをコピーして作成します。
+1. **Codexをデバッグモードで起動**
+   - Codexのショートカットをコピーして作成します。
    - ショートカットを右クリックし、**「プロパティ」** を開きます。
    - **「リンク先」** の末尾に半角スペースを入れて `--remote-debugging-port=9222` を追加します。
-     - 例: `"C:\...\Antigravity.exe" --remote-debugging-port=9222`
+     - 例: `"C:\...\Codex.exe" --remote-debugging-port=9222`
    - 「OK」を押して保存し、そのショートカットからアプリを起動します。
 
 2. **ボットを起動**
@@ -158,7 +158,7 @@ antigravityのAIチャットに以下のプロンプトを入力してくださ�
 | `/screenshot` | スクリーンショットを取得 |
 | `/template` | よく使うプロンプトを登録・呼び出し・一覧表示 (`add`, `use`, `list`, `delete`) |
 | `/schedule` | 指定した日時にプロンプトを自動実行 (`add`, `list`, `delete`) |
-| `/workspace` | 現在のチャンネルを特定のAntigravityのワークスペースに紐づけ (`bind`, `list`) |
+| `/workspace` | 現在のチャンネルを特定のCodexのワークスペースに紐づけ (`bind`, `list`) |
 
 ## 🛠️ 技術仕様
 

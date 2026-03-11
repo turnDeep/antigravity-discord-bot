@@ -10,7 +10,7 @@ test*.txt
 test_injection.js
 debug_dom.js
 inspect_dom.js
-restart_antigravity_debug.bat
+restart_codex_debug.bat
 .DS_Store
 Thumbs.db
 tests/*.png

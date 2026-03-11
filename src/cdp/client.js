@@ -19,13 +19,13 @@ export async function discoverCDP() {
                 t.webSocketDebuggerUrl &&
                 !t.title.includes('Launchpad') &&
                 !t.url.includes('workbench-jetski-agent') &&
-                (t.url.includes('workbench') || t.title.includes('Antigravity') || t.title.includes('Cascade'))
+                (t.url.includes('workbench') || t.title.includes('Codex'))
             );
 
             if (!target) {
                 target = list.find(t =>
                     t.webSocketDebuggerUrl &&
-                    (t.url.includes('workbench') || t.title.includes('Antigravity') || t.title.includes('Cascade')) &&
+                    (t.url.includes('workbench') || t.title.includes('Codex')) &&
                     !t.title.includes('Launchpad')
                 );
             }
@@ -33,7 +33,7 @@ export async function discoverCDP() {
             if (!target) {
                 target = list.find(t =>
                     t.webSocketDebuggerUrl &&
-                    (t.url.includes('workbench') || t.title.includes('Antigravity') || t.title.includes('Cascade') || t.title.includes('Launchpad'))
+                    (t.url.includes('workbench') || t.title.includes('Codex') || t.title.includes('Launchpad'))
                 );
             }
 

@@ -82,7 +82,7 @@ export async function checkIsGenerating(cdp) {
         function findAgentFrame(win) {
              const iframes = document.querySelectorAll('iframe');
              for(let i=0; i<iframes.length; i++) {
-                 if(iframes[i].src.includes('cascade-panel')) {
+                 if(iframes[i].src.includes('codex-panel')) {
                      try { return iframes[i].contentDocument; } catch(e){}
                  }
              }
@@ -95,7 +95,7 @@ export async function checkIsGenerating(cdp) {
             if (!el || el.offsetParent === null) return false;
             const style = win.getComputedStyle(el);
             if (style.display === 'none' || style.visibility === 'hidden' || style.opacity === '0') return false;
-            // cascade buttons display flex but scale or width may be 0 during transitions sometimes,
+            // codex buttons display flex but scale or width may be 0 during transitions sometimes,
             // though usually they just toggle display or remove the element.
             if (el.offsetWidth === 0 && el.offsetHeight === 0) return false;
             return true;
@@ -135,7 +135,7 @@ export async function getLastResponse(cdp) {
         function getTargetDoc() {
             const iframes = document.querySelectorAll('iframe');
             for (let i = 0; i < iframes.length; i++) {
-                if (iframes[i].src.includes('cascade-panel')) {
+                if (iframes[i].src.includes('codex-panel')) {
                     try { return iframes[i].contentDocument; } catch(e) {}
                 }
             }
@@ -150,7 +150,7 @@ export async function getLastResponse(cdp) {
             '.prose.assistant',
             '.prose',
             '.group.relative.flex.gap-3',
-            '.leading-relaxed.select-text.text-sm', // 最新のAntigravity/Cascade メッセージUI
+            '.leading-relaxed.select-text.text-sm', // 最新のCodex/Codex メッセージUI
             '.whitespace-pre-wrap.break-words'
         ].join(', ')));
         
@@ -187,7 +187,7 @@ export async function stopGeneration(cdp) {
         function getTargetDoc() {
             const iframes = document.querySelectorAll('iframe');
             for (let i = 0; i < iframes.length; i++) {
-                if (iframes[i].src.includes('cascade-panel')) {
+                if (iframes[i].src.includes('codex-panel')) {
                     try { return iframes[i].contentDocument; } catch(e) {}
                 }
             }

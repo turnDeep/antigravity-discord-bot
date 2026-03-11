@@ -5,7 +5,7 @@ async function stopGeneration(cdp) {
         function getTargetDoc() {
             const iframes = document.querySelectorAll('iframe');
             for (let i = 0; i < iframes.length; i++) {
-                if (iframes[i].src.includes('cascade-panel')) {
+                if (iframes[i].src.includes('codex-panel')) {
                     try { return iframes[i].contentDocument; } catch(e) {}
                 }
             }
