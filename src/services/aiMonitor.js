@@ -130,7 +130,7 @@ export async function monitorAIResponse(originalMessage, cdp) {
                     if (response && response.text) {
                         logInteraction('AI_REPLY', `Sending AI response to Discord (${channelId}, ${response.text.length} chars)`);
                         const chunks = response.text.match(/[\s\S]{1,1900}/g) || [response.text];
-                        await originalMessage.reply({ content: `🤖 **Antigravity:**\n${chunks[0]}` });
+                        await originalMessage.reply({ content: `🤖 **Codex:**\n${chunks[0]}` });
                         for (let i = 1; i < chunks.length; i++) {
                             await originalMessage.channel.send(chunks[i]);
                         }

@@ -18,5 +18,5 @@ export const SELECTORS = {
     CANCEL_KEYWORDS: ['cancel', 'reject', 'deny', 'ignore', 'キャンセル', '拒否', '無視', 'いいえ', '不許可'],
 
     // Context
-    CONTEXT_URL_KEYWORD: 'cascade-panel'
+    CONTEXT_URL_KEYWORD: 'codex-panel'
 };

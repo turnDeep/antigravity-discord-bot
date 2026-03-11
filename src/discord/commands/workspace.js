@@ -36,7 +36,7 @@ export async function handleWorkspaceCommand(interaction) {
             try {
                 const list = await getJson(`http://127.0.0.1:${port}/json/list`);
                 for (const t of list) {
-                    if (t.webSocketDebuggerUrl && (t.url.includes('workbench') || t.title.includes('Antigravity') || t.title.includes('Cascade') || t.title.includes('Launchpad'))) {
+                    if (t.webSocketDebuggerUrl && (t.url.includes('workbench') || t.title.includes('Codex') || t.title.includes('Launchpad'))) {
                         targets.push(t);
                     }
                 }
@@ -44,7 +44,7 @@ export async function handleWorkspaceCommand(interaction) {
         }
 
         if (targets.length === 0) {
-            return interaction.reply({ embeds: [createErrorEmbed('Antigravityが見つかりません', '起動しているか、デバッグポートが有効か確認してください。')] });
+            return interaction.reply({ embeds: [createErrorEmbed('Codexが見つかりません', '起動しているか、デバッグポートが有効か確認してください。')] });
         }
 
         const listText = targets.map((t, i) => `**${i + 1}.** ${t.title}\n└ \`${t.url}\``).join('\n\n');
@@ -60,7 +60,7 @@ export async function handleWorkspaceCommand(interaction) {
             try {
                 const list = await getJson(`http://127.0.0.1:${port}/json/list`);
                 for (const t of list) {
-                    if (t.webSocketDebuggerUrl && (t.url.includes('workbench') || t.title.includes('Antigravity') || t.title.includes('Cascade'))) {
+                    if (t.webSocketDebuggerUrl && (t.url.includes('workbench') || t.title.includes('Codex'))) {
                         targets.push(t);
                     }
                 }

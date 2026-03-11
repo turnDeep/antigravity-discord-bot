@@ -19,7 +19,7 @@ export async function handleInteraction(interaction, cdp) {
     updateFileWatcherChannel(interaction.channel);
 
     if (!cdp) {
-        await interaction.reply({ content: "❌ CDP not found. Is Antigravity running?", ephemeral: true });
+        await interaction.reply({ content: "❌ CDP not found. Is Codex running?", ephemeral: true });
         return;
     }
 
@@ -27,7 +27,7 @@ export async function handleInteraction(interaction, cdp) {
 
     if (commandName === 'help') {
         return interaction.reply(
-            `📖 **Antigravity Bot コマンド一覧**\n\n` +
+            `📖 **Codex Bot コマンド一覧**\n\n` +
             `💬 **テキスト送信** — 通常のメッセージを送信\n` +
             `📎 **ファイル添付** — 画像・ファイルを添付して送信\n\n` +
             `🖼️ \`/screenshot\` — スクリーンショット取得\n` +
@@ -161,7 +161,7 @@ export async function handleMessageCreate(message, cdp, workspaceRoot) {
     if (!messageText) return;
 
     if (!cdp) {
-        return message.reply(`⚠️ Antigravityに接続できません。デバッグモードで起動しているか確認してください。`);
+        return message.reply(`⚠️ Codexに接続できません。デバッグモードで起動しているか確認してください。`);
     }
 
     updateFileWatcherChannel(message.channel);
@@ -189,10 +189,10 @@ export async function handleThreadCreate(thread, newlyCreated, ensureCDP) {
 
     const cdp = await ensureCDP(thread.id);
     if (cdp) {
-        logInteraction('THREAD', `Syncing new thread ${thread.id} to new Antigravity chat.`);
+        logInteraction('THREAD', `Syncing new thread ${thread.id} to new Codex chat.`);
         const started = await startNewChat(cdp);
         if (started) {
-            await thread.send({ embeds: [createInfoEmbed('スレッド同期', 'Antigravity側でも新しいチャットを開始しました。')] });
+            await thread.send({ embeds: [createInfoEmbed('スレッド同期', 'Codex側でも新しいチャットを開始しました。')] });
         }
     }
 }

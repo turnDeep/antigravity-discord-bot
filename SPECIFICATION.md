@@ -1,8 +1,8 @@
-# Antigravity Discord Bot 仕様書
+# Codex Discord Bot 仕様書
 
 ## 1. 概要
-このBotは、Chrome DevTools Protocol (CDP) を利用して、ローカルで動作するAntigravity (VS Code Fork) をDiscordから遠隔操作するためのツールです。
-Antigravity自体にはAPIがないため、CDPを通じてDOM操作やJavaScript実行を行うことで機能を実現しています。
+このBotは、Chrome DevTools Protocol (CDP) を利用して、ローカルで動作するCodex (VS Code Fork) をDiscordから遠隔操作するためのツールです。
+Codex自体にはAPIがないため、CDPを通じてDOM操作やJavaScript実行を行うことで機能を実現しています。
 
 ## 2. システム構成
 
@@ -10,26 +10,26 @@ Antigravity自体にはAPIがないため、CDPを通じてDOM操作やJavaScrip
 ```mermaid
 graph LR
     User[Discord User] -- Command --> DiscordBot[Node.js Bot]
-    DiscordBot -- CDP (WebSocket) --> Antigravity["Antigravity (VS Code)"]
-    Antigravity -- File System --> FileWatcher[Chokidar]
+    DiscordBot -- CDP (WebSocket) --> Codex["Codex (VS Code)"]
+    Codex -- File System --> FileWatcher[Chokidar]
     FileWatcher -- Event --> DiscordBot
     DiscordBot -- Reply --> User
 ```
 
 ### 主要コンポーネント
-- **CDP (Chrome DevTools Protocol)**: AntigravityのWebView（iframe）内のDOMにアクセスし、ボタンクリックやテキスト取得を行います。
-- **Chokidar**: ファイルシステムの変更を監視し、Antigravityが生成したファイルや変更を検知してDiscordに通知します。
+- **CDP (Chrome DevTools Protocol)**: CodexのWebView（iframe）内のDOMにアクセスし、ボタンクリックやテキスト取得を行います。
+- **Chokidar**: ファイルシステムの変更を監視し、Codexが生成したファイルや変更を検知してDiscordに通知します。
 - **Discord.js**: Discord APIとの通信を行います。
 
 ## 3. 機能詳細
 
 ### 3.1 テキスト生成
-- ユーザーからのメッセージをCDP経由でAntigravityのチャット入力欄に注入します。
+- ユーザーからのメッセージをCDP経由でCodexのチャット入力欄に注入します。
 - 入力欄のセレクター: `textarea[class*="input"]` など
 - 送信ボタンのクリックまたは `Enter` キーイベントの発火によって生成を開始します。
 
 ### 3.2 モデル切替 (`/model`)
-- AntigravityのUI上にあるモデル選択ドロップダウンを操作します。
+- CodexのUI上にあるモデル選択ドロップダウンを操作します。
 - **DOM操作**:
   1. `<button aria-expanded="false">` をクリックしてドロップダウンを展開。
   2. ドロップダウン内のモデル名リストを取得。

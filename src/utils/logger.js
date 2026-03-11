@@ -12,7 +12,7 @@ const COLORS = {
 };
 
 export function setTitle(status) {
-    process.stdout.write(String.fromCharCode(27) + "]0;Antigravity Bot: " + status + String.fromCharCode(7));
+    process.stdout.write(String.fromCharCode(27) + "]0;Codex Bot: " + status + String.fromCharCode(7));
 }
 
 export function logInteraction(type, content) {

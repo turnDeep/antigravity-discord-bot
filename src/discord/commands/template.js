@@ -64,7 +64,7 @@ export async function handleTemplateCommand(interaction, cdp) {
         }
 
         if (!cdp) {
-            return interaction.reply({ embeds: [createErrorEmbed('Antigravityとの接続エラー', 'CDP接続が見つかりません。デバッグモードで起動しているか確認してください。')] });
+            return interaction.reply({ embeds: [createErrorEmbed('Codexとの接続エラー', 'CDP接続が見つかりません。デバッグモードで起動しているか確認してください。')] });
         }
 
         await interaction.reply({ embeds: [createInfoEmbed(`テンプレート '${name}' を使用して生成を開始します`, text)] });

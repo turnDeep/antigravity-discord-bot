@@ -70,8 +70,8 @@ client.once('ready', async () => {
 
 
     ensureCDP().then(res => {
-        if (res) console.log("✅ Auto-connected to Antigravity on startup.");
-        else console.log("❌ Could not auto-connect to Antigravity on startup.");
+        if (res) console.log("✅ Auto-connected to Codex on startup.");
+        else console.log("❌ Could not auto-connect to Codex on startup.");
     });
 
     initSchedules(client);

@@ -1,17 +1,45 @@
+# Dependencies
 node_modules/
-.env
-discord_uploads/
-discord_interaction.log
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-test*.txt
-test_injection.js
-debug_dom.js
-inspect_dom.js
-restart_antigravity_debug.bat
+
+# macOS
 .DS_Store
-Thumbs.db
-tests/*.png
-dom_dump.json
+**/.DS_Store
+
+# Xcode user data
+*.xcuserdatad/
+**/xcuserdata/
+*.xcworkspace/xcuserdata/
+
+# Xcode build
+DerivedData/
+build/
+*.ipa
+
+# Environment / secrets
+.env
+.env.*
+*.pem
+*.p12
+*.key
+*.cer
+
+# Build artifacts
+*.swp
+*.swo
+*~
+
+# Minified JS bundles (not part of this project)
+/main.js
+/links-*.js
+/scheme-*.js
+/initial-route-atom-*.js
+/use-navigate-to-local-conversation-*.js
+
+# Temp files
+$TMP_PLACEHOLDER
+
+# Claude project config (local only)
+.claude/
+
+# VS Code
+.vscode/
